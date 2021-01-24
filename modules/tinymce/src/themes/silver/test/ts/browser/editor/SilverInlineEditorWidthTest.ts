@@ -7,7 +7,7 @@ import { Css, Scroll, SugarBody, SugarElement } from '@ephox/sugar';
 import Editor from 'tinymce/core/api/Editor';
 import { ToolbarMode } from 'tinymce/themes/silver/api/Settings';
 import Theme from 'tinymce/themes/silver/Theme';
-import { sOpenMore } from '../../module/MenuUtils';
+import { pOpenMore } from '../../module/MenuUtils';
 
 UnitTest.asynctest('Inline Editor (Silver) width test', (success, failure) => {
   Theme();
@@ -106,7 +106,7 @@ UnitTest.asynctest('Inline Editor (Silver) width test', (success, failure) => {
       toolbar_mode: 'sliding',
       width: 400
     }, 400, (editor) => [
-      sOpenMore(ToolbarMode.sliding),
+      pOpenMore(ToolbarMode.sliding),
       sAssetWidth(SugarElement.fromDom(editor.getContainer()), 400, 300)
     ])
   ], success, failure);

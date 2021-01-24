@@ -63,8 +63,8 @@ UnitTest.asynctest('Editor (Silver) bespoke toolbar buttons test', (success, fai
         ])
       );
 
-      const sCheckItemsAtLocation = sCheckItemsAtLocationPlus(Step.pass, Step.pass, (text) => MenuUtils.sOpenMenu('', text));
-      const sCheckAlignItemsAtLocation = sCheckItemsAtLocationPlus(Step.pass, Step.pass, () => MenuUtils.sOpenAlignMenu(''));
+      const sCheckItemsAtLocation = sCheckItemsAtLocationPlus(Step.pass, Step.pass, (text) => MenuUtils.pOpenMenu('', text));
+      const sCheckAlignItemsAtLocation = sCheckItemsAtLocationPlus(Step.pass, Step.pass, () => MenuUtils.pOpenAlignMenu(''));
 
       const sCheckSubItemsAtLocation = (expectedSubmenu: string) => sCheckItemsAtLocationPlus(
         GeneralSteps.sequence([
@@ -73,13 +73,13 @@ UnitTest.asynctest('Editor (Silver) bespoke toolbar buttons test', (success, fai
         ]),
         // Afterwards, escape the submenu
         Keyboard.sKeydown(doc, Keys.escape(), { }),
-        (text) => MenuUtils.sOpenMenu('', text)
+        (text) => MenuUtils.pOpenMenu('', text)
       );
 
       const sTestAlignment = Log.stepsAsStep('TBA', 'Checking alignment ticks and updating', [
         tinyApis.sSetContent('<p>First paragraph</p><p>Second paragraph</p>'),
         tinyApis.sSetCursor([ 0, 0 ], 'Fi'.length),
-        MenuUtils.sOpenAlignMenu('Align'),
+        MenuUtils.pOpenAlignMenu('Align'),
         sAssertFocusOnItem('Left'),
         Keyboard.sKeydown(doc, Keys.down(), { }),
         sAssertFocusOnItem('Center'),
@@ -119,7 +119,7 @@ UnitTest.asynctest('Editor (Silver) bespoke toolbar buttons test', (success, fai
       const sTestFontSelect = Log.stepsAsStep('TBA', 'Checking fontselect ticks and updating', [
         tinyApis.sSetContent('<p>First paragraph</p><p>Second paragraph</p>'),
         tinyApis.sSetCursor([ 0, 0 ], 'Fi'.length),
-        MenuUtils.sOpenMenu('FontSelect', 'Verdana'),
+        MenuUtils.pOpenMenu('FontSelect', 'Verdana'),
         sAssertFocusOnItem('Andale Mono'),
         Keyboard.sKeydown(doc, Keys.enter(), { }),
         UiFinder.sNotExists(SugarBody.body(), '[role="menu"]'),
@@ -149,7 +149,7 @@ UnitTest.asynctest('Editor (Silver) bespoke toolbar buttons test', (success, fai
       const sTestFontSizeSelect = Log.stepsAsStep('TBA', 'Checking fontsize ticks and updating', [
         tinyApis.sSetContent('<p>First paragraph</p><p>Second paragraph</p>'),
         tinyApis.sSetCursor([ 0, 0 ], 'Fi'.length),
-        MenuUtils.sOpenMenu('FontSelect', '12pt'), // This might be fragile.
+        MenuUtils.pOpenMenu('FontSelect', '12pt'), // This might be fragile.
         sAssertFocusOnItem('8pt'),
         Keyboard.sKeydown(doc, Keys.enter(), { }),
         UiFinder.sNotExists(SugarBody.body(), '[role="menu"]'),
@@ -179,7 +179,7 @@ UnitTest.asynctest('Editor (Silver) bespoke toolbar buttons test', (success, fai
       const sTestFormatSelect = Log.stepsAsStep('TBA', 'Checking format ticks and updating', [
         tinyApis.sSetContent('<p>First paragraph</p><p>Second paragraph</p>'),
         tinyApis.sSetCursor([ 0, 0 ], 'Fi'.length),
-        MenuUtils.sOpenMenu('Format', 'Paragraph:first'),
+        MenuUtils.pOpenMenu('Format', 'Paragraph:first'),
         sAssertFocusOnItem('Paragraph'),
         Keyboard.sKeydown(doc, Keys.down(), { }),
         sAssertFocusOnItem('Heading 1'),
@@ -238,7 +238,7 @@ UnitTest.asynctest('Editor (Silver) bespoke toolbar buttons test', (success, fai
       const sTestStyleSelect = Log.stepsAsStep('TBA', 'Checking style ticks and updating', [
         tinyApis.sSetContent('<p>First paragraph</p><p>Second paragraph</p>'),
         tinyApis.sSetCursor([ 0, 0 ], 'Fi'.length),
-        MenuUtils.sOpenMenu('Format', 'Paragraph:last'),
+        MenuUtils.pOpenMenu('Format', 'Paragraph:last'),
         sAssertFocusOnItem('Headings'),
         Keyboard.sKeydown(doc, Keys.right(), { }),
         sAssertFocusOnItem('Heading 1'),
@@ -298,7 +298,7 @@ UnitTest.asynctest('Editor (Silver) bespoke toolbar buttons test', (success, fai
       const sTestToolbarKeyboardNav = Log.stepsAsStep('TBA', 'Checking toolbar keyboard navigation', [
         tinyApis.sSetContent('<p>First paragraph</p><p>Second paragraph</p>'),
         tinyApis.sSetCursor([ 0, 0 ], 'Fi'.length),
-        MenuUtils.sOpenAlignMenu('Align'),
+        MenuUtils.pOpenAlignMenu('Align'),
         sAssertFocusOnItem('Left'),
         Keyboard.sKeydown(doc, Keys.down(), { }),
         sAssertFocusOnItem('Center'),

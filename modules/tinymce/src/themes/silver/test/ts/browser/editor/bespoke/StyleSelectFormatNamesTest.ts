@@ -58,7 +58,7 @@ UnitTest.asynctest('browser.tinymce.themes.silver.bespoke.StyleSelectFormatNames
         );
 
       Pipeline.async({ }, [
-        MenuUtils.sOpenMenu('Format', 'Paragraph:last'),
+        MenuUtils.pOpenMenu('Format', 'Paragraph:last'),
         sAssertStyleSelectMenuItems('Checking style select items', [
           { title: 'Named inline format', element: 'span' },
           { title: 'Named block format', element: 'h1' },

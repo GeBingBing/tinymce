@@ -25,8 +25,8 @@ UnitTest.asynctest('browser.tinymce.themes.silver.editor.header.StickyHeaderInit
 
         return Log.steps('TINY-4644', 'Test toolbar initial placement with toolbar_location: ' + toolbarLocation + ' and height: ' + height, [
           tinyApis.sFocus(),
-          ...expectDocked ? [ StickyUtils.sAssertHeaderDocked(isToolbarTop) ] : [ ],
-          StickyUtils.sAssertEditorClasses(expectDocked)
+          ...expectDocked ? [ StickyUtils.pAssertHeaderDocked(isToolbarTop) ] : [ ],
+          StickyUtils.assertEditorClasses(expectDocked)
         ]);
       }),
       McEditor.cRemove
